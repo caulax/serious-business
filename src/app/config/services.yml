@@ -1,0 +1,48 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+imports:
+    - { resource: '@AppBundle/Resources/config/services.yaml' }
+
+parameters:
+#    parameter_name: value
+
+services:
+
+    crv.doctrine_entity_repository.good:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\Good
+
+    crv.doctrine_entity_repository.order:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\Order
+
+    crv.doctrine_entity_repository.ordergoods:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\OrderGoods
+
+    crv.doctrine_entity_repository.user:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\User
+
+    crv.doctrine_entity_repository.usergoods:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\UserGoods
+
+    app.jwt_token_authenticator:
+            parent: lexik_jwt_authentication.security.guard.jwt_token_authenticator
+            class: AppBundle\Security\Guard\JWTAuthenticator
+
+    gedmo.listener.loggable:
+        class: AppBundle\Listener\Listener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }

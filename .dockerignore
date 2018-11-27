@@ -1,0 +1,8 @@
+.git/
+.gitattributes*
+.gitignore*
+README.md*
+Dockerfile
+!/.gitattributes
+src/vendor/
+src/jwt/

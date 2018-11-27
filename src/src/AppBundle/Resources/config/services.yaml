@@ -1,0 +1,8 @@
+parameters:
+
+services:
+  apiservice.broker:
+    class: AppBundle\Service\Broker
+    arguments: ['@service_container']
+  apiservice.mosquittoclient:
+    class: Mosquitto\Client
