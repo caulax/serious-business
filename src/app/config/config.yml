@@ -7,19 +7,19 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    redis_ip: '%redis_host%'
-    redis_ports: '%redis_port%'
-    redis_schemes: '%redis_scheme%'
-    broker_ip: '%brok_ip%'
-    broker_port: '%brok_port%'
-    broker_name: '%brok_name%'
-    broker_pass: '%brok_pass%'
-    broker_client_name: '%brok_client_name%'
-    broker_new_lock_topic: '%new_lock_topic%'
-    broker_hash_trigger_topic: '%hash_trigger_topic%'
-    config_broker_ip: '%config_brok_ip%'
-    config_broker_port: '%config_brok_port%'
-    config_uri_key_hash_service: '%uri_key_hash_service%'
+    # redis_ip: '%redis_host%'
+    # redis_ports: '%redis_port%'
+    # redis_schemes: '%redis_scheme%'
+    # broker_ip: '%brok_ip%'
+    # broker_port: '%brok_port%'
+    # broker_name: '%brok_name%'
+    # broker_pass: '%brok_pass%'
+    # broker_client_name: '%brok_client_name%'
+    # broker_new_lock_topic: '%new_lock_topic%'
+    # broker_hash_trigger_topic: '%hash_trigger_topic%'
+    # config_broker_ip: '%config_brok_ip%'
+    # config_broker_port: '%config_brok_port%'
+    # config_uri_key_hash_service: '%uri_key_hash_service%'
 
 framework:
     #esi:             ~

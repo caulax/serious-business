@@ -8,39 +8,39 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-keys:
-    resource: "@AppBundle/Controller/KeyController.php"
+good:
+    resource: "@AppBundle/Controller/GoodController.php"
     type: rest
-    #defaults: { _controller: AppBundle:Key:cget }
+    # defaults: { _controller: AppBundle:Good:get }
 
-users:
-    resource: "@AppBundle/Controller/UserController.php"
-    type: rest
+# users:
+#     resource: "@AppBundle/Controller/UserController.php"
+#     type: rest
 
-locks:
-    resource: "@AppBundle/Controller/LockController.php"
-    type: rest
+# locks:
+#     resource: "@AppBundle/Controller/LockController.php"
+#     type: rest
 
-employees:
-    resource: "@AppBundle/Controller/EmployeeController.php"
-    type: rest
+# employees:
+#     resource: "@AppBundle/Controller/EmployeeController.php"
+#     type: rest
 
-emplkey:
-    resource: "@AppBundle/Controller/EmployeeKeyController.php"
-    type: rest
+# emplkey:
+#     resource: "@AppBundle/Controller/EmployeeKeyController.php"
+#     type: rest
 
-lockkey:
-    resource: "@AppBundle/Controller/LockkeyController.php"
-    type: rest
-masterkey:
-    resource: "@AppBundle/Controller/MasterKeyController.php"
-    type: rest
-log:
-    resource: "@AppBundle/Controller/LogController.php"
-    type: rest
-entrance:
-    resource: "@AppBundle/Controller/EntranceController.php"
-    type: rest
-loglocks:
-    resource: "@AppBundle/Controller/LogLockController.php"
-    type: rest
+# lockkey:
+#     resource: "@AppBundle/Controller/LockkeyController.php"
+#     type: rest
+# masterkey:
+#     resource: "@AppBundle/Controller/MasterKeyController.php"
+#     type: rest
+# log:
+#     resource: "@AppBundle/Controller/LogController.php"
+#     type: rest
+# entrance:
+#     resource: "@AppBundle/Controller/EntranceController.php"
+#     type: rest
+# loglocks:
+#     resource: "@AppBundle/Controller/LogLockController.php"
+#     type: rest
