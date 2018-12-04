@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Table(name="goods")
+ * @ORM\Table(name="good")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\GoodRepository")
  */
 class Good

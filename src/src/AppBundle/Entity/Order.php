@@ -20,8 +20,6 @@ class Order
 
     /**
      * @ORM\Column(name="id_user", type="string", length=255)
-     * @ORM\OneToOne(target="User")
-     * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
     private $user;
 
@@ -34,7 +32,37 @@ class Order
      * @var \DateTime
      * @ORM\Column(name="time", type="datetime", nullable=false)
      */
-    private $time = 'CURRENT_TIMESTAMP';
+    private $time;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Good")
+     * @ORM\JoinTable(
+     * name="order_goods",
+     * joinColumns={@ORM\JoinColumn(name="id_order", referencedColumnName="id")},
+     * inverseJoinColumns={@ORM\JoinColumn(name="id_good", referencedColumnName="id")}
+     * )
+     */
+    private $goods = [];
+
+    public function removeGood(Good $good) {
+        return $this->goods->removeElement($good);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoods()
+    {
+        return $this->goods;
+    }
+
+    /**
+     * @param mixed $goods
+     */
+    public function setGoods($goods)
+    {
+        $this->goods[] = $goods;
+    }
 
     /**
      * @return mixed
@@ -61,11 +89,11 @@ class Order
     }
 
     /**
-     * @param mixed $user
+     * @param mixed $id
      */
-    public function setUser(User $user)
+    public function setUser($id)
     {
-        $this->user = $user;
+        $this->user = $id;
     }
 
     /**
@@ -84,19 +112,6 @@ class Order
         $this->status = $status;
     }
 
-    /**
-     * Set time
-     *
-     * @param \DateTime $time
-     *
-     * @return LogLockKey
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
-
-        return $this;
-    }
 
     /**
      * Get time

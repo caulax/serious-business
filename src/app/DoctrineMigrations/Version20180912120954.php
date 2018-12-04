@@ -23,7 +23,7 @@ class Version20180912120954 extends AbstractMigration
                 id int(6) AUTO_INCREMENT PRIMARY KEY,
                 id_user int(6) NOT NULL,
                 status varchar(255) NOT NULL,
-                time DATETIME NOT NULL
+                time TIMESTAMP NOT NULL
             );
             
             DROP TABLE IF EXISTS user;
@@ -69,6 +69,8 @@ class Version20180912120954 extends AbstractMigration
 
             ALTER TABLE user_goods ADD CONSTRAINT user_goods_fk0 FOREIGN KEY (id_user) REFERENCES user(id);
             ALTER TABLE user_goods ADD CONSTRAINT user_goods_fk1 FOREIGN KEY (id_good) REFERENCES good(id);
+
+            ALTER TABLE order_goods ADD CONSTRAINT uq_og UNIQUE(id_good, id_order);
             "
         );
     }

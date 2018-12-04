@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Table(name="order_goods")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\UserGoodsRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\OrderGoodsRepository")
  */
 class OrderGoods
 {
@@ -22,7 +22,7 @@ class OrderGoods
 
     /**
      * @var \AppBundle\Entity\Order
-     *
+     * @ORM\Column(name="id_order", type="integer", length=6)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Order")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="order", referencedColumnName="id")
@@ -32,7 +32,7 @@ class OrderGoods
 
     /**
      * @var \AppBundle\Entity\Good
-     *
+     * @ORM\Column(name="id_good", type="integer", length=6)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Good")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="good", referencedColumnName="id")
@@ -87,7 +87,4 @@ class OrderGoods
     {
         $this->good = $good;
     }
-
-
-
 }
