@@ -51,7 +51,7 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
 
     /**
      * Gets a collection of goods
-     * @Security("has_role('ROLE_MANAGER')")
+     * @Security("has_role('ROLE_DIRECTOR') or has_role('ROLE_MANAGER')")
      * @return array
      *
      **/
@@ -76,7 +76,7 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
 
         $em->persist($order);
         $em->flush();
-        return $this->getOrderRepository()->findGoodQuery($order->getId())->getResult();
+        return $this->getOrderRepository()->find($order->getId());
     }
 
     /**
@@ -96,7 +96,7 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
             $good = $this->getGoodRepository()->find($id_g);
 
             if ($good === null) {
-                return new Response(sprintf('Dont exist good with id %s', $id_g), Response::HTTP_NOT_FOUND);
+                return new Response(sprintf('Dont exist order with id %s', $id_g), Response::HTTP_NOT_FOUND);
             }
 
             $order->setGoods($good);
@@ -131,6 +131,36 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
     }
 
     /**
+     * @param Request $request
+     * @param $id
+     * @param $status
+     * @return array|Response
+     * @Security("has_role('ROLE_DIRECTOR')")
+     */
+    public function patchStatusAction(Request $request, $id, $status) {
+
+        $em = $this->get('doctrine')->getManager();
+
+        $order = $this->getOrderRepository()->find($id);
+
+        if($order == null) {
+            return new Response(sprintf('Dont exist order with id %s', $id), Response::HTTP_NOT_FOUND);
+        }
+
+        if($status == "disapprove") {
+            $this->getOrderRepository()->deleteQuery($id)->getResult();
+            return new Response(sprintf('Order deleted %s', $id), Response::HTTP_OK);
+        }
+
+        $order->setStatus($status);
+
+        $em->persist($order);
+        $em->flush($order);
+
+        return new Response(sprintf('Updated status of order %s', $id));
+    }
+
+    /**
      * @return OrderRepository
      */
     private function getOrderRepository() {
@@ -139,7 +169,7 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
 
 
     /**
-     * @return GoodsRepository
+     * @return GoodRepository
      */
     private function getGoodRepository() {
         return $this->get('crv.doctrine_entity_repository.good');

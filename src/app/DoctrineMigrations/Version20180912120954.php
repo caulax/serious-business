@@ -62,9 +62,9 @@ class Version20180912120954 extends AbstractMigration
                 id_good int(6) NOT NULL
             );
 
-            ALTER TABLE e_order ADD CONSTRAINT e_order_fk0 FOREIGN KEY (id_user) REFERENCES user(id);
+            ALTER TABLE e_order ADD CONSTRAINT e_order_fk0 FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE CASCADE;
 
-            ALTER TABLE order_goods ADD CONSTRAINT order_goods_fk0 FOREIGN KEY (id_order) REFERENCES e_order(id);
+            ALTER TABLE order_goods ADD CONSTRAINT order_goods_fk0 FOREIGN KEY (id_order) REFERENCES e_order(id) ON DELETE CASCADE;
             ALTER TABLE order_goods ADD CONSTRAINT order_goods_fk1 FOREIGN KEY (id_good) REFERENCES good(id);
 
             ALTER TABLE user_goods ADD CONSTRAINT user_goods_fk0 FOREIGN KEY (id_user) REFERENCES user(id);
