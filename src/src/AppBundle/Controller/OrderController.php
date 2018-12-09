@@ -31,7 +31,7 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
      * @return mixed
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
-     * @Security("has_role('ROLE_MANAGER')")
+     * @Security("has_role('ROLE_MANAGER') or has_role('ROLE_DIRECTOR')")
      * @ApiDoc(
      *     output="AppBundle\Entity\Good",
      *     statusCodes={
@@ -51,7 +51,7 @@ class OrderController extends FOSRestController implements ClassResourceInterfac
 
     /**
      * Gets a collection of goods
-     * @Security("has_role('ROLE_MANAGER')")
+     * @Security("has_role('ROLE_MANAGER') or has_role('ROLE_DIRECTOR')")
      * @return array
      *
      **/
