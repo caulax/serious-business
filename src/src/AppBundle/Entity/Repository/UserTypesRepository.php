@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Anton
- * Date: 23.01.2018
- * Time: 16:57
- */
+
 namespace AppBundle\Entity\Repository;
 use Doctrine\ORM\EntityRepository;
 class UserTypesRepository extends EntityRepository
